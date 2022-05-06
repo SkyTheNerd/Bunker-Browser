@@ -7,9 +7,14 @@
 	</head>
 	<body>
         <script src="../Bunker-Browser/js/search.js"></script>
-		<script>alert("search.html says: joe is "+q)</script>
-<iframe src="https://www.bing.com/search?q="+q style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+<iframe id="query" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
     Your browser doesn't support iframes
 </iframe>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+	   $(function(){
+		$('iframe').attr('src', "https://www.bing.com/search?q="+q);
+	  });
+	</script>
 	</body>
 </html>
