@@ -19,6 +19,14 @@
 	  // Code to get the search query (variable goes into search bar and this gets it.)
 	  const urlq = new URLSearchParams(window.location.search);
 	  const q = urlq.get("q");
+	  if(q==""){
+		  alert("Attention! If you ended up here, you must have either been snoopin through the files, or deleted the variable.")
+		  alert("Unless if you wanted to go to the bing homepage, but was to lazy to type it in yourself.")
+	  }
+	  if(q==null){
+		  alert("Attention! If you ended up here, you must have either been snoopin through the files, or deleted the variable.")
+		  alert("Or maybe you wanted to search null.")
+	  }
 	</script>
 	</body>
 </html>

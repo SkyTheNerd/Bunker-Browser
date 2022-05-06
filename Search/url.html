@@ -19,6 +19,16 @@
 	  // Code to get the search query (variable goes into search bar and this gets it.)
 	  const urlq = new URLSearchParams(window.location.search);
 	  const q = urlq.get("q");
+	  if(q==""){
+		  alert("Attention! If you ended up here, you must have either been snoopin through the files, or deleted the variable. so, there is nothing here.")
+		  alert("Or is there?")
+		  location.href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+		}
+	  if(q==null){
+		  alert("Attention! If you ended up here, you must have either been snoopin through the files, or deleted the variable. so, there is nothing here. Or is there?")
+		  alert("Or is there?")
+		  location.href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+		}
 	</script>
 	</body>
 </html>
