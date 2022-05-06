@@ -1,0 +1,111 @@
+***********************
+** FNAF-JS Changelog **
+** 	   By Slynch	 **
+***********************
+
+Thirtieth Commit:
+	- Started documentation process
+	- Removed Greenworks code/binaries so people have to get it themselves
+
+Twenty-ninth Commit:
+	- Fixed evals on most animations (courtesy of a tip from chrysls)
+	- Fixed mistake on playpoweroutageanimation where it would always last 6~ seconds
+	- Fixed misnamed soundPlay call in an animation
+	- Fixed bug when "continuing" night 5 when you've beaten the game
+	- Added error message for when not in debug mode
+	- Made cssString a global variable so it isn't constantly remade every time debuglog is called
+	- Tweaked difficulty slightly. May need further work
+	- Adjusted main menu alignments
+	- Removed pointless constant in save.js
+	- Foxy's timer is now reduced by 1 whenever the player looks back to room 1C
+		- Also moved from main thread to updatecurrentroom
+	- Converted many things to WebP to lower filesize (30MB!!)
+	- Added a graphics button on the main menu. Not sure whether to use it yet
+	- Added randomised fading on main menu static
+		- Need to implement this for camera static; could use same function?
+		
+	- Thirtieth commit will mark beta testing phase, in which all the kinks will be worked out.
+		- After the bugs are fixed and the port is released, any additions will be quality-of-life ones or optimizations.
+
+Twenty-eighth Commit:
+	- Finished custom night
+	- Added main menu stars
+	- Added error notifier in corner (for unnoticed errors) when in debug mode
+	- Added check in main loop that if the difficulty of an AI is 0, don't update (for freddy on night 1/2 and custom nights)
+	- Need to:
+		- Add sine fading on static
+		- Convert UI to WebP (and convert some back to PNG due to quality loss)
+		- I want to finish this by 30th commit.
+
+Twenty-seventh Commit:
+	- Added a script loader for HTML builds
+	- Added sixth night and customise night (not yet implemented)
+	- Fixed typo in debug display
+	- Turned off JS error alert if running debug mode (console would be up anyway)
+	- Added night 7 loading screen but can't find night 6? Will have to find that or make one.
+	- Need to:
+		- Add sine fading on static
+		- Finish custom night implementation (should be easy enough)
+		- Main menu stars on achievements
+	- Note: using this video for reference https://www.youtube.com/watch?v=bnBS9Sxw1T8 since I don't actually play this game.
+
+Twenty-sixth Commit:
+	- Re-enabled other AI
+	- Improved debug display
+	- Added Greenworks
+
+Twenty-fifth Commit:
+	- Finished Fazbear
+	- Added sounds for Chica in kitchen
+	- Added random int from range function at bottom of main.js
+	- Removed code that ran when 1!=1
+	- Added a notice for when running in debug mode.
+	- Tweaked debuginfo
+	- Fixed gameover animation not lowering camera feed.
+	- Added sounds for Fazbear moving around.
+	
+Twenty-fourth Commit:
+	- Added draft version of Freddy Fazbear!
+	- I forgot the rest; check commits description
+
+Twenty-third Commit:
+	- Fixed save.js not being loaded
+	- Added animation.js for any animation code.
+	- Added transitional animation. Only used on night start at the moment.
+	- Commented console messages from SeamlessLoop to prevent clutter. 
+	- Again, probably more stuff I forgot.
+
+Twenty-second Commit:
+	- Fixed endnight() function
+		- Not completely; children cheering doesn't work.
+	- Added day to loading screen
+	- Fixed stopAmbientSound() not working/crashing the game on debug mode
+	- Added debuglog()
+	- Fixed gameover by power outage.
+	- Probably some other stuff I forgot.
+
+Twenty-first Commit:
+	- Added room names to map
+	- Added sound for light switch not working
+	- Added JS error alert catcher for testers to report errors without needing console up
+	- Tweaked night 1 difficulty
+	- Added WebP converter to /bin/
+	- Added SeamlessLoop.js for fixing the ambient track loops
+
+Twentieth Commit:
+	- Added a changelog
+	- Fixed "feedopen=true" bug, caused camerafeed to not open when foxxy appeared.
+	- Added difficulty settings for nights 1-6
+	- Updated sound engine:
+		- Sounds are all preloaded for faster playback
+		- Individual sounds can only be played one at a time (so no two of the same sound at the same time)
+		- Hopefully this fixes sounds not playing back when game is run server-side.
+		- Needs work on the functions; pauseSound() for example, to make it future-proof.
+	- Added intro picture
+	- Fixed highlighting bug.
+	- Fixed new game not resetting to night 1.
+	- Not an addition but a note; use %s, %i, %f inside console.log to show string, integer and float, respectively.
+		- Example: flopper = "hello"; console.log("%s, my name is Sam",flopper);
+		- Output is "hello, my name is Sam" in console.
+		- Not sure if this is quicker  than console.log(flopper + ", my name is Sam") though.
+	- Some other additions I might have forgotten. 
