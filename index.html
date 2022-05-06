@@ -122,7 +122,10 @@ h3 {
 
 <div class="bgimg-1">
   <div class="captionbottom">
-    <input id="yt_term" class="border" placeholder="Surf The Web Incognito"><button class="btn-inline minize" onclick="Search();">Go</button>
+    <input id="searchquery" class="border" placeholder="Surf The Web Incognito"><button class="btn-inline minize" onclick="SearchQuery();">Go</button>
+    <div class="captionbottom">
+      <input id="searchurl" class="border" placeholder="Visit Websites Incognito"><button class="btn-inline minize" onclick="SearchUrl();">Go</button>
+    </div>
   </div>
   <div class="captiontop">
     <span class="border">Bunker Browser</span>
@@ -141,7 +144,20 @@ h3 {
       <a href="Proxies/Globy/index.html">Globy</a>
     </div>
   </div>
-	<script src="js/tile.js"></script>
+	<script>
+  function SearchQuery(){
+    var q = document.getElementById("searchquery").value;
+    if(q!=""){
+      location.href="Search/search.html?q="+q;
+    }
+  }
+  function SearchUrl(){
+    var q = document.getElementById("searchurl").value;
+    if(q!=""){
+      location.href="Search/url.html?q="+q;
+    }
+  }
+  </script>
 </div>
 </body>
 </html>

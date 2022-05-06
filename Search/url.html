@@ -6,15 +6,19 @@
 		<link href="/css/ui.css" rel="stylesheet" />
 	</head>
 	<body>
-        <script src="../Bunker-Browser/js/search.js"></script>
 <iframe id="query" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
     Your browser doesn't support iframes
 </iframe>
+						<!--- gets jquery or something idk --->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
+	  // makes variables beable to go into the iframe.
 	   $(function(){
-		$('iframe').attr('src', "https://www.bing.com/search?q="+q);
+		$('iframe').attr('src', q);
 	  });
+	  // Code to get the search query (variable goes into search bar and this gets it.)
+	  const urlq = new URLSearchParams(window.location.search);
+	  const q = urlq.get("q");
 	</script>
 	</body>
 </html>
