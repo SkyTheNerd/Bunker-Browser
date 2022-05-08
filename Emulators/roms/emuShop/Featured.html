@@ -6,6 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: "Lato", sans-serif;
 }
@@ -98,24 +101,96 @@ a {
   <button class="openbtn" onclick="openNav()">☰</button>  
   <h2>Featured</h2>
   <div class="img-container">
-    <img src="assets/images/Game-Covers/Mariokart64.png" alt="Mario Kart 64" style="width:100%">
-    <b style="margin-left: 122.5px; font-family: Switch">Super Mario Kart 64</b>
+    <img src="assets/images/Game-Covers/Sonic3&Knuckles.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Sonic 3 + Sonic & Knuckles</b>
+    <button class="btn" onclick="downloadS3K()"><i class="fa fa-download"></i> Download</button>
+    </div>
+    <div class="img-container">
+    <img src="assets/images/Game-Covers/SoulSilver.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Pokemon SoulSilver</b>
+    <button class="btn" onclick="downloadHG()"><i class="fa fa-download"></i> Download</button>
+    </div>
+    <div class="img-container">
+    <img src="assets/images/Game-Covers/PKMNSapphire.png" style="width:95%">
+    <b style="margin-left: 20%; font-family: Switch">Pokemon Sapphire</b>
+    <button class="btn" onclick="downloadPKMNSP()"><i class="fa fa-download"></i> Download</button>
+    </div>
+    <div class="img-container">
+    <img src="assets/images/Game-Covers/Sonic2.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Sonic The Hedgehog 2</b>
+    <button class="btn" onclick="downloadS2()"><i class="fa fa-download"></i> Download</button>
+    </div>
+    <div class="img-container">
+    <img src="assets/images/Game-Covers/Mariokart64.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Super Mario Kart 64</b>
     <button class="btn" onclick="downloadMK64()"><i class="fa fa-download"></i> Download</button>
     </div>
     <div class="img-container">
-    <img src="assets/images/Game-Covers/Heartgold.png" alt="Pokemon Heartgold" style="width:100%">
-    <b style="margin-left: 122.5px; font-family: Switch">Pokemon Heart Gold</b>
-    <button class="btn" onclick="downloadHG()"><i class="fa fa-download"></i> Download</button>
+    <img src="assets/images/Game-Covers/PKMNPlatinum.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Pokemon Platnium</b>
+    <button class="btn" onclick="downloadPKMNPM()"><i class="fa fa-download"></i> Download</button>
+    </div>
+    <div class="img-container">
+    <img src="assets/images/Game-Covers/RedMysteryDungeon.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Pokemon Platnium</b>
+    <button class="btn" onclick="downloadRMD()"><i class="fa fa-download"></i> Download</button>
+    </div>
+    <div class="img-container">
+    <img src="assets/images/Game-Covers/DK64.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Donkey Kong 64</b>
+    <button class="btn" onclick="downloadDK64()"><i class="fa fa-download"></i> Download</button>
+    </div>
+    <div class="img-container">
+    <img src="assets/images/Game-Covers/Sonic1.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Sonic The Hedgehog</b>
+    <button class="btn" onclick="downloadS1()"><i class="fa fa-download"></i> Download</button>
+    </div>
+    <div class="img-container">
+    <img src="assets/images/Game-Covers/FireRed.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Pokemon FireRed</b>
+    <button class="btn" onclick="downloadFR()"><i class="fa fa-download"></i> Download</button>
+    </div>
+    <div class="img-container">
+    <img src="assets/images/Game-Covers/M64.png" style="width:100%">
+    <b style="margin-left: 20%; font-family: Switch">Super Mario 64</b>
+    <button class="btn" onclick="downloadM64()"><i class="fa fa-download"></i> Download</button>
     </div>
   </div>
 </div>
 
 <script>
-function downloadMK64() {
-  location.href="https://raw.githubusercontent.com/SkyTheNerd/Bunker-emuShop-Assets/main/N64/Mario%20Kart%2064%20(USA).z64"
+function downloadS3K() {
+  location.href="https://raw.githubusercontent.com/SkyTheNerd/Bunker-emuShop-Assets/main/Sega/Sonic%20%26%20Knuckles%20%2B%20Sonic%20The%20Hedgehog%203%20(USA).md"
 }
 function downloadHG() {
   location.href="https://raw.githubusercontent.com/SkyTheNerd/Bunker-emuShop-Assets/main/NDS/Pokemon%20-%20HeartGold%20Version%20(USA).zip"
+}
+function downloadPKMNSP() {
+  location.href="https://github.com/SkyTheNerd/Bunker-emuShop-Assets/blob/main/GBA/Pokemon%20-%20Sapphire%20Version%20(USA).gba?raw=true"
+}
+function downloadS2() {
+  location.href="https://raw.githubusercontent.com/SkyTheNerd/Bunker-emuShop-Assets/main/Sega/Sonic%20The%20Hedgehog%202%20(World)%20(Rev%20B).md"
+}
+function downloadMK64() {
+  location.href="https://raw.githubusercontent.com/SkyTheNerd/Bunker-emuShop-Assets/main/N64/Mario%20Kart%2064%20(USA).z64"
+}
+function downloadPKMNPM() {
+  location.href="https://github.com/SkyTheNerd/Bunker-emuShop-Assets/blob/main/NDS/Pokemon%20-%20Platinum%20Version%20(USA).zip?raw=true"
+}
+function downloadRMD() {
+  location.href="https://github.com/SkyTheNerd/Bunker-emuShop-Assets/blob/main/GBA/Pokemon%20Mystery%20Dungeon%20-%20Red%20Rescue%20Team%20(USA,%20Australia).gba?raw=true"
+}
+function downloadDK64() {
+  location.href="https://github.com/SkyTheNerd/Bunker-emuShop-Assets/blob/main/N64/Donkey%20Kong%2064%20(USA).z64?raw=true"
+}
+function downloadS1() {
+  location.href="https://github.com/SkyTheNerd/Bunker-emuShop-Assets/blob/main/Sega/Sonic%20The%20Hedgehog%20(USA,%20Europe).md?raw=true"
+}
+function downloadFR() {
+  location.href="https://github.com/SkyTheNerd/Bunker-emuShop-Assets/blob/main/GBA/Pokemon%20-%20FireRed%20Version%20(USA).gba?raw=true"
+}
+function downloadM64() {
+  location.href="https://github.com/SkyTheNerd/Bunker-emuShop-Assets/blob/main/N64/Super%20Mario%2064%20(USA).z64?raw=true"
 }
 function openNav() {
   document.getElementById("mySidebar").style.width = "300px";
