@@ -5,6 +5,24 @@
 <link rel="icon" href="images/newtab.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="js/crate.js" async defer>
+  new Crate({
+    server: '',
+    channel: '',
+    glyph: ['images/WidgetBot.png', '100%'],
+  })
+  window.onload = CrateVisible()
+  function CrateVisible(){
+    if(localStorage.NewsSetting == "ON"){
+      crate.show()
+    }
+    else if(localStorage.NewsSetting == "OFF"){
+      crate.hide()
+    }
+  }
+</script>
+
+
 <style>
 
 body, html {
@@ -13,6 +31,68 @@ body, html {
   margin: 0;
   font: 400 15px/1.8 "Lato", sans-serif;
   color: #777;
+}
+ /* The Overlay (background) */
+ .overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.25s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 37%; /* 37% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+.overlay button {
+  font-size: 36px; 
+  color:#008cff;
+  background-color: #000000;
+  cursor: pointer;
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
 }
 /* Add a black background color to the top navigation bar */
 .topnav {
@@ -76,7 +156,6 @@ body, html {
 
 }
 .bgimg-1 {
-  background-image: url("images/1920x1080.gif");
   height: 100%;
 }
 
@@ -241,6 +320,21 @@ form.example::after {
 </style>
 </head>
 <body>
+  <!-- The overlay -->
+  <div id="myNav" class="overlay">
+    <!-- Button to close the overlay navigation -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <!-- Overlay content -->
+    <div id="Settings" class="captiontop">
+      <span class="border">Settings</span>
+    </div>
+    <div id="SettingsContent" class="overlay-content">
+      <button id="NewsSetting" onclick="NewsToggle()" value="ON">News: Enabled</button>
+      <button id="ThemeSetting" onclick="ThemeToggle()" value="ON">Theme: New</button>
+      <button id="SearchSetting" onclick="SearchToggle()" value="ON">Search: Incognito</button>
+      <button href="#">About</button>
+    </div>
+  </div>
   <div style="display:none">
     <audio controls autoplay>
       <audio autoplay="true" loop="true" src="audio/hip_shop.mp3">
@@ -263,23 +357,158 @@ form.example::after {
   <a href="Emulators/roms/emuShop/Featured.html">Roms</a>
   <a href="Chatroom/index.html">Chat</a>
   <div class="search-container">
-    <form action="Search/url.html?">
-      <input type="text" placeholder="View sites Incognito.." name="q">
+    <button onclick="openNav()"><i onclick="openNav()" class="fa fa-gear"></i></button>
+    <form id="URLSearchFunction" action="Search/url.html?">
+      <input id="URLSearchPlaceholderText" type="text" placeholder="Visit sites Incognito.." name="q">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
 </div> 
-<div class="bgimg-1">
-  <div class="captionbottom">
-    <form class="example" action="Search/search.html?" style="margin:auto;max-width:500px">
-      <input type="text" placeholder="Surf the web Incognito.." name="q">
+<div id="bg-img" class="bgimg-1" style="background-image: url('images/1920x1080.gif');">
+  <div id="searchbar" class="captionbottom">
+    <form class="example" id="SearchFunction" action="Search/search.html?" style="margin:auto;max-width:500px">
+      <input id="SearchPlaceholderText" type="text" placeholder="Surf the web Incognito.." name="q">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
     </div>
   </div>
-  <div class="captiontop">
+  <div id="title" class="captiontop">
     <span class="border">Bunker Browser</span>
   </div>
+  <script>
+    /* News Toggle */
+    window.onload = GetNews()
+    function GetNews() {      
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      if(localStorage.NewsSetting == "ON"){
+      localStorage.NewsSetting = "ON";
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      document.getElementById("NewsSetting").innerHTML = "News: Enabled";}        
+
+      else if(localStorage.NewsSetting == "OFF"){
+      localStorage.NewsSetting = "OFF";
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      document.getElementById("NewsSetting").innerHTML = "News: Disabled";}
+    }
+    function NewsToggle() {  
+      if(document.getElementById("NewsSetting").value=="OFF"){
+      localStorage.NewsSetting = "ON";
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      document.getElementById("NewsSetting").innerHTML = "News: Enabled";}
+      
+      else if(document.getElementById("NewsSetting").value=="ON"){
+      localStorage.NewsSetting = "OFF";
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      document.getElementById("NewsSetting").innerHTML = "News: Disabled";}
+      else {
+        localStorage.NewsSetting = "OFF";  
+      }
+      location.reload()
+    }
+    /* Theme Toggle */
+    window.onload = GetTheme()
+    function GetTheme() {      
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      if(localStorage.ThemeSetting == "ON"){
+      localStorage.ThemeSetting = "ON";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: New";    
+      document.getElementById('bg-img').style.backgroundImage = "url('images/1920x1080.gif')";
+      document.getElementById('title').style.top = "20%";
+      document.getElementById('Settings').style.top = "20%";
+      document.getElementById('searchbar').style.top = "35%";
+      document.getElementById('SettingsContent').style.top = "37%";}
+
+      else if(localStorage.ThemeSetting == "OFF"){
+      localStorage.ThemeSetting = "OFF";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Old";
+      document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
+      document.getElementById('title').style.top = "12%";
+      document.getElementById('Settings').style.top = "12%";
+      document.getElementById('searchbar').style.top = "82%";
+      document.getElementById('SettingsContent').style.top = "85%";}
+    }
+    function ThemeToggle() {
+      if(document.getElementById("ThemeSetting").value=="OFF"){
+      localStorage.ThemeSetting = "ON";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: New";
+      document.getElementById('bg-img').style.backgroundImage = "url('images/1920x1080.gif')";
+      document.getElementById('title').style.top = "20%";
+      document.getElementById('Settings').style.top = "20%";
+      document.getElementById('searchbar').style.top = "35%";
+      document.getElementById('SettingsContent').style.top = "37%";}
+      
+      else if(document.getElementById("ThemeSetting").value=="ON"){
+      localStorage.ThemeSetting = "OFF";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Old";
+      document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
+      document.getElementById('title').style.top = "12%";
+      document.getElementById('Settings').style.top = "12%";
+      document.getElementById('searchbar').style.top = "82%";
+      document.getElementById('SettingsContent').style.top = "85%";}
+      else {
+        localStorage.ThemeSetting = "OFF";  
+      }
+    }
+    /* Search Toggle */
+    window.onload = GetSearch()
+    function GetSearch() {      
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      if(localStorage.SearchSetting == "ON"){
+      localStorage.SearchSetting = "ON";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Incognito";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web Incognito..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit sites Incognito..";
+      document.getElementById("SearchFunction").action = "Search/search.html?";
+      document.getElementById("URLSearchFunction").action = "Search/url.html?";}    
+
+      else if(localStorage.SearchSetting == "OFF"){
+      localStorage.SearchSetting = "OFF";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Normal";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit websites..";
+      document.getElementById("SearchFunction").action = "https://www.google.com/search?";
+      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";}   
+    }
+    function SearchToggle() {  
+      if(document.getElementById("SearchSetting").value=="OFF"){
+      localStorage.SearchSetting = "ON";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Incognito";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web Incognito..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit sites Incognito..";
+      document.getElementById("SearchFunction").action = "Search/search.html?";
+      document.getElementById("URLSearchFunction").action = "Search/url.html?";}   
+      
+      else if(document.getElementById("SearchSetting").value=="ON"){
+      localStorage.SearchSetting = "OFF";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Normal";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit Websites..";
+      document.getElementById("SearchFunction").action = "https://www.google.com/search?";
+      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";}   
+      else {
+        localStorage.SearchSetting = "OFF";  
+      }
+    }
+  </script>
+  <script>
+    /* Open when someone clicks on the span element */
+    function openNav() {
+      document.getElementById("myNav").style.width = "100%";
+    }
+
+    /* Close when someone clicks on the "x" symbol inside the overlay */
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+    } 
+  </script>
 	<script>
   function SearchQuery(){
     var q = document.getElementById("searchquery").value;
