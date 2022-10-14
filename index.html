@@ -450,7 +450,14 @@ form.example::after {
       document.getElementById('searchbar').style.top = "82%";
       document.getElementById('SettingsContent').style.top = "85%";}
       else {
-        localStorage.ThemeSetting = "OFF";  
+      localStorage.ThemeSetting = "OFF";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Old";
+      document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
+      document.getElementById('title').style.top = "12%";
+      document.getElementById('Settings').style.top = "12%";
+      document.getElementById('searchbar').style.top = "82%";
+      document.getElementById('SettingsContent').style.top = "85%";
       }
     }
     /* Search Toggle */
@@ -494,7 +501,13 @@ form.example::after {
       document.getElementById("SearchFunction").action = "https://www.google.com/search?";
       document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";}   
       else {
-        localStorage.SearchSetting = "OFF";  
+      localStorage.SearchSetting = "OFF";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Normal";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit Websites..";
+      document.getElementById("SearchFunction").action = "https://www.google.com/search?";
+      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";
       }
     }
   </script>
