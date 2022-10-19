@@ -330,7 +330,7 @@ form.example::after {
     </div>
     <div id="SettingsContent" class="overlay-content">
       <button id="NewsSetting" onclick="NewsToggle()" value="ON">News: Enabled</button>
-      <button id="ThemeSetting" onclick="ThemeToggle()" value="ON">Theme: New</button>
+      <button id="ThemeSetting" onclick="ThemeToggle()" value="ON">Theme: Default</button>
       <button id="SearchSetting" onclick="SearchToggle()" value="ON">Search: Incognito</button>
       <button href="#">About</button>
     </div>
@@ -412,7 +412,7 @@ form.example::after {
       if(localStorage.ThemeSetting == "ON"){
       localStorage.ThemeSetting = "ON";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: New";    
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Default";    
       document.getElementById('bg-img').style.backgroundImage = "url('images/1920x1080.gif')";
       document.getElementById('title').style.top = "20%";
       document.getElementById('Settings').style.top = "20%";
@@ -422,7 +422,7 @@ form.example::after {
       else if(localStorage.ThemeSetting == "OFF"){
       localStorage.ThemeSetting = "OFF";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: Old";
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Classic";
       document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
       document.getElementById('title').style.top = "12%";
       document.getElementById('Settings').style.top = "12%";
@@ -433,7 +433,7 @@ form.example::after {
       if(document.getElementById("ThemeSetting").value=="OFF"){
       localStorage.ThemeSetting = "ON";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: New";
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Default";
       document.getElementById('bg-img').style.backgroundImage = "url('images/1920x1080.gif')";
       document.getElementById('title').style.top = "20%";
       document.getElementById('Settings').style.top = "20%";
@@ -443,7 +443,7 @@ form.example::after {
       else if(document.getElementById("ThemeSetting").value=="ON"){
       localStorage.ThemeSetting = "OFF";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: Old";
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Classic";
       document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
       document.getElementById('title').style.top = "12%";
       document.getElementById('Settings').style.top = "12%";
@@ -452,7 +452,7 @@ form.example::after {
       else {
       localStorage.ThemeSetting = "OFF";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: Old";
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Classic";
       document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
       document.getElementById('title').style.top = "12%";
       document.getElementById('Settings').style.top = "12%";

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Google</title>
+<link rel="icon" href="images/newtab.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="js/crate.js" async defer>
+  new Crate({
+    server: '',
+    channel: '',
+    glyph: ['images/WidgetBot.png', '100%'],
+  })
+  window.onload = CrateVisible()
+  function CrateVisible(){
+    if(localStorage.NewsSetting == "ON"){
+      crate.show()
+    }
+    else if(localStorage.NewsSetting == "OFF"){
+      crate.hide()
+    }
+  }
+</script>
+
+
+<style>
+
+body, html {
+  overflow:hidden;
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+ /* The Overlay (background) */
+ .overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.25s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 37%; /* 37% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+.overlay button {
+  font-size: 36px; 
+  color:#008cff;
+  background-color: #000000;
+  cursor: pointer;
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+/* Add a black background color to the top navigation bar */
+.topnav {
+  overflow: visible;
+  background-color: #1f1e1e;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: rgb(11, 124, 230);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the "active" element to highlight the current page */
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.bgimg-1 {
+  height: 100%;
+}
+
+.captionbottom {
+  position: relative;
+  top: 35%;
+}
+
+.captiontop {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.captiontop span.border {
+  background-color: rgba(0, 0, 0, 0.798);
+  color: rgb(255, 255, 255);
+  padding: 11.5px;
+  font-size: 50px;
+}
+
+.captionverybottom {
+  position: absolute;
+  left: 0;
+  top: 95%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.captionverybottom span.border {
+  background-color: rgba(0, 0, 0, 0.798);
+  color: rgb(255, 255, 255);
+  padding: 11.5px;
+  font-size: 35px;
+}
+
+h3 {
+  letter-spacing: 5apx;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+.dropbtn {
+  background-color: #2196F3;
+  color: white;
+  padding: 18.2px;
+  font-size: 18px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  top: 92.9%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 9999 !important;
+  top: 100%;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #0b7dda;}
+* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.topnav .search-container {
+  float: right;
+}
+.topnav input[type=text] {
+  padding: 10px;
+  margin-top: 8px;
+  font-size: 19px;
+  border: none;
+}
+.topnav .search-container button {
+  float: right;
+  padding: 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #00000000;
+  color: #0b7dda;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+</style>
+</head>
+<body>
+  <!-- The overlay -->
+  <div id="myNav" class="overlay">
+    <!-- Button to close the overlay navigation -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <!-- Overlay content -->
+    <div id="Settings" class="captiontop">
+      <span class="border">Settings</span>
+    </div>
+    <div id="SettingsContent" class="overlay-content">
+      <button id="NewsSetting" onclick="NewsToggle()" value="ON">News: Enabled</button>
+      <button id="ThemeSetting" onclick="ThemeToggle()" value="ON">Theme: Default</button>
+      <button id="SearchSetting" onclick="SearchToggle()" value="ON">Search: Incognito</button>
+      <button href="#">About</button>
+    </div>
+  </div>
+  <div style="display:none">
+    <audio controls autoplay>
+      <audio autoplay="true" loop="true" src="Audio/hip_shop.mp3">
+    </audio>  
+  </div>
+ <div class="topnav">
+  <div class="dropdown">
+    <button class="dropbtn">Proxies</button>
+      <div class="dropdown-content">
+        <a href="Proxies/HolyUnblocker/index.html">Holy Unblocker</a>
+        <a href="Proxies/Incognito/index.html">Incognito</a>
+        <a href="Proxies/Hypertabs/index.html">Hypertabs</a>
+        <a href="Proxies/Riptide/index.html">Riptide</a>
+        <a href="Proxies/TerbiumOS/index.html">TerbiumOS</a>
+      </div>
+    </div>
+  <a href="Games/index.html">Games</a>
+  <a href="Apps/index.html">Apps</a>
+  <a href="Emulators/index.html">Emulators</a>
+  <a href="Emulators/roms/emuShop/Featured.html">Roms</a>
+  <a href="Chatroom/index.html">Chat</a>
+  <div class="search-container">
+    <button onclick="openNav()"><i onclick="openNav()" class="fa fa-gear"></i></button>
+    <form id="URLSearchFunction" action="Search/url.html?">
+      <input id="URLSearchPlaceholderText" type="text" placeholder="Visit sites Incognito.." name="q">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div> 
+<div id="bg-img" class="bgimg-1" style="background-image: url('images/1920x1080.gif');">
+  <div id="searchbar" class="captionbottom">
+    <form class="example" id="SearchFunction" action="Search/search.html?" style="margin:auto;max-width:500px">
+      <input id="SearchPlaceholderText" type="text" placeholder="Surf the web Incognito.." name="q">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    </div>
+  </div>
+  <div id="title" class="captiontop">
+    <span class="border">Bunker Browser</span>
+  </div>
+  <script>
+    /* News Toggle */
+    window.onload = GetNews()
+    function GetNews() {      
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      if(localStorage.NewsSetting == "ON"){
+      localStorage.NewsSetting = "ON";
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      document.getElementById("NewsSetting").innerHTML = "News: Enabled";}        
+
+      else if(localStorage.NewsSetting == "OFF"){
+      localStorage.NewsSetting = "OFF";
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      document.getElementById("NewsSetting").innerHTML = "News: Disabled";}
+    }
+    function NewsToggle() {  
+      if(document.getElementById("NewsSetting").value=="OFF"){
+      localStorage.NewsSetting = "ON";
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      document.getElementById("NewsSetting").innerHTML = "News: Enabled";}
+      
+      else if(document.getElementById("NewsSetting").value=="ON"){
+      localStorage.NewsSetting = "OFF";
+      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
+      document.getElementById("NewsSetting").innerHTML = "News: Disabled";}
+      else {
+        localStorage.NewsSetting = "OFF";  
+      }
+      location.reload()
+    }
+    /* Theme Toggle */
+    window.onload = GetTheme()
+    function GetTheme() {      
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      if(localStorage.ThemeSetting == "ON"){
+      localStorage.ThemeSetting = "ON";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Default";    
+      document.getElementById('bg-img').style.backgroundImage = "url('images/1920x1080.gif')";
+      document.getElementById('title').style.top = "20%";
+      document.getElementById('Settings').style.top = "20%";
+      document.getElementById('searchbar').style.top = "35%";
+      document.getElementById('SettingsContent').style.top = "37%";}
+
+      else if(localStorage.ThemeSetting == "OFF"){
+      localStorage.ThemeSetting = "OFF";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Classic";
+      document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
+      document.getElementById('title').style.top = "12%";
+      document.getElementById('Settings').style.top = "12%";
+      document.getElementById('searchbar').style.top = "82%";
+      document.getElementById('SettingsContent').style.top = "85%";}
+    }
+    function ThemeToggle() {
+      if(document.getElementById("ThemeSetting").value=="OFF"){
+      localStorage.ThemeSetting = "ON";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Default";
+      document.getElementById('bg-img').style.backgroundImage = "url('images/1920x1080.gif')";
+      document.getElementById('title').style.top = "20%";
+      document.getElementById('Settings').style.top = "20%";
+      document.getElementById('searchbar').style.top = "35%";
+      document.getElementById('SettingsContent').style.top = "37%";}
+      
+      else if(document.getElementById("ThemeSetting").value=="ON"){
+      localStorage.ThemeSetting = "OFF";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Classic";
+      document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
+      document.getElementById('title').style.top = "12%";
+      document.getElementById('Settings').style.top = "12%";
+      document.getElementById('searchbar').style.top = "82%";
+      document.getElementById('SettingsContent').style.top = "85%";}
+      else {
+      localStorage.ThemeSetting = "OFF";
+      document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Classic";
+      document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
+      document.getElementById('title').style.top = "12%";
+      document.getElementById('Settings').style.top = "12%";
+      document.getElementById('searchbar').style.top = "82%";
+      document.getElementById('SettingsContent').style.top = "85%";
+      }
+    }
+    /* Search Toggle */
+    window.onload = GetSearch()
+    function GetSearch() {      
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      if(localStorage.SearchSetting == "ON"){
+      localStorage.SearchSetting = "ON";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Incognito";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web Incognito..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit sites Incognito..";
+      document.getElementById("SearchFunction").action = "Search/search.html?";
+      document.getElementById("URLSearchFunction").action = "Search/url.html?";}    
+
+      else if(localStorage.SearchSetting == "OFF"){
+      localStorage.SearchSetting = "OFF";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Normal";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit websites..";
+      document.getElementById("SearchFunction").action = "https://www.google.com/search?";
+      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";}   
+    }
+    function SearchToggle() {  
+      if(document.getElementById("SearchSetting").value=="OFF"){
+      localStorage.SearchSetting = "ON";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Incognito";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web Incognito..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit sites Incognito..";
+      document.getElementById("SearchFunction").action = "Search/search.html?";
+      document.getElementById("URLSearchFunction").action = "Search/url.html?";}   
+      
+      else if(document.getElementById("SearchSetting").value=="ON"){
+      localStorage.SearchSetting = "OFF";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Normal";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit Websites..";
+      document.getElementById("SearchFunction").action = "https://www.google.com/search?";
+      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";}   
+      else {
+      localStorage.SearchSetting = "OFF";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Normal";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the web..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit Websites..";
+      document.getElementById("SearchFunction").action = "https://www.google.com/search?";
+      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";
+      }
+    }
+  </script>
+  <script>
+    /* Open when someone clicks on the span element */
+    function openNav() {
+      document.getElementById("myNav").style.width = "100%";
+    }
+
+    /* Close when someone clicks on the "x" symbol inside the overlay */
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+    } 
+  </script>
+	<script>
+  function SearchQuery(){
+    var q = document.getElementById("searchquery").value;
+    if(q!=""){
+      location.href="https://www.google.com/search?q="+q;
+    }
+  }
+  function SearchUrl(){
+    var q = document.getElementById("searchurl").value;
+    if(q!=""){
+      location.href="Search/url.html?q="+q;
+    }
+  }
+  </script>
+  <script>
+    function addOnBlurListener(onBlurCallback, onFocusCallback) {
+  var hidden, visibilityState, visibilityChange; // check the visiblility of the page
+
+  if (typeof document.hidden !== "undefined") {
+    hidden = "hidden"; visibilityChange = "visibilitychange"; visibilityState = "visibilityState";
+  } else if (typeof document.mozHidden !== "undefined") {
+    hidden = "mozHidden"; visibilityChange = "mozvisibilitychange"; visibilityState = "mozVisibilityState";
+  } else if (typeof document.msHidden !== "undefined") {
+    hidden = "msHidden"; visibilityChange = "msvisibilitychange"; visibilityState = "msVisibilityState";
+  } else if (typeof document.webkitHidden !== "undefined") {
+    hidden = "webkitHidden"; visibilityChange = "webkitvisibilitychange"; visibilityState = "webkitVisibilityState";
+  }
+
+
+  if (typeof document.addEventListener === "undefined" || typeof hidden === "undefined") {
+    // not supported
+  } else {
+    document.addEventListener(visibilityChange, function() {
+      switch (document[visibilityState]) {
+        case "visible":
+          if (onFocusCallback) onFocusCallback();
+          break;
+        case "hidden":
+          if (onBlurCallback) onBlurCallback();
+          break;
+      }
+    }, false);
+  }
+}
+
+function muteAudio() {
+  console.log('mute all audios...');
+  var audios = document.getElementsByTagName('audio'),
+    i, len = audios.length;
+  for (i = 0; i < len; i++) {
+    console.log(audios[i]);
+    audios[i].muted = true;
+  }
+
+}
+
+function unMuteAudio() {
+  console.log('unmute all audios...');
+  var audios = document.getElementsByTagName('audio'),
+    i, len = audios.length;
+  for (i = 0; i < len; i++) {
+    console.log(audios[i]);
+    audios[i].muted = false;
+  }
+
+}
+
+addOnBlurListener(muteAudio, unMuteAudio);
+  </script>
+</div>
+</body>
+</html>
