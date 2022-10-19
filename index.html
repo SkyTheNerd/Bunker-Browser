@@ -34,7 +34,7 @@ body, html {
 }
  /* The Overlay (background) */
  .overlay {
-  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
   height: 100%;
   width: 0;
   position: fixed; /* Stay in place */
@@ -66,7 +66,7 @@ body, html {
   transition: 0.3s; /* Transition effects on hover (color) */
 }
 .overlay button {
-  font-size: 36px; 
+  font-size: 36px;
   color:#008cff;
   background-color: #000000;
   cursor: pointer;
@@ -130,6 +130,7 @@ body, html {
   border: none;
   margin-top: 8px;
   margin-right: 16px;
+  width: 300px;
   font-size: 17px;
 }
 
@@ -314,7 +315,7 @@ form.example::after {
     padding: 14px;
   }
   .topnav input[type=text] {
-    border: 1px solid #ccc;  
+    border: 1px solid #ccc;
   }
 }
 </style>
@@ -330,15 +331,15 @@ form.example::after {
     </div>
     <div id="SettingsContent" class="overlay-content">
       <button id="NewsSetting" onclick="NewsToggle()" value="ON">News: Enabled</button>
-      <button id="ThemeSetting" onclick="ThemeToggle()" value="ON">Theme: Default</button>
-      <button id="SearchSetting" onclick="SearchToggle()" value="ON">Search: Incognito</button>
+      <button id="ThemeSetting" onclick="ThemeToggle()" value="ON">Theme: New</button>
+      <button id="SearchSetting" onclick="SearchToggle()" value="ON">Search: Hidden</button>
       <button href="#">About</button>
     </div>
   </div>
   <div style="display:none">
     <audio controls autoplay>
       <audio autoplay="true" loop="true" src="Audio/hip_shop.mp3">
-    </audio>  
+    </audio>
   </div>
  <div class="topnav">
   <div class="dropdown">
@@ -363,7 +364,7 @@ form.example::after {
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
-</div> 
+</div>
 <div id="bg-img" class="bgimg-1" style="background-image: url('images/1920x1080.gif');">
   <div id="searchbar" class="captionbottom">
     <form class="example" id="SearchFunction" action="Search/search.html?" style="margin:auto;max-width:500px">
@@ -378,19 +379,19 @@ form.example::after {
   <script>
     /* News Toggle */
     window.onload = GetNews()
-    function GetNews() {      
+    function GetNews() {
       document.getElementById("NewsSetting").value = localStorage.NewsSetting;
       if(localStorage.NewsSetting == "ON"){
       localStorage.NewsSetting = "ON";
       document.getElementById("NewsSetting").value = localStorage.NewsSetting;
-      document.getElementById("NewsSetting").innerHTML = "News: Enabled";}        
+      document.getElementById("NewsSetting").innerHTML = "News: Enabled";}
 
       else if(localStorage.NewsSetting == "OFF"){
       localStorage.NewsSetting = "OFF";
       document.getElementById("NewsSetting").value = localStorage.NewsSetting;
       document.getElementById("NewsSetting").innerHTML = "News: Disabled";}
     }
-    function NewsToggle() {  
+    function NewsToggle() {
       if(document.getElementById("NewsSetting").value=="OFF"){
       localStorage.NewsSetting = "ON";
       document.getElementById("NewsSetting").value = localStorage.NewsSetting;
@@ -401,18 +402,18 @@ form.example::after {
       document.getElementById("NewsSetting").value = localStorage.NewsSetting;
       document.getElementById("NewsSetting").innerHTML = "News: Disabled";}
       else {
-        localStorage.NewsSetting = "OFF";  
+        localStorage.NewsSetting = "OFF";
       }
       location.reload()
     }
     /* Theme Toggle */
     window.onload = GetTheme()
-    function GetTheme() {      
+    function GetTheme() {
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
       if(localStorage.ThemeSetting == "ON"){
       localStorage.ThemeSetting = "ON";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: Default";    
+      document.getElementById("ThemeSetting").innerHTML = "Theme: New";
       document.getElementById('bg-img').style.backgroundImage = "url('images/1920x1080.gif')";
       document.getElementById('title').style.top = "20%";
       document.getElementById('Settings').style.top = "20%";
@@ -422,7 +423,7 @@ form.example::after {
       else if(localStorage.ThemeSetting == "OFF"){
       localStorage.ThemeSetting = "OFF";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: Classic";
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Old";
       document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
       document.getElementById('title').style.top = "12%";
       document.getElementById('Settings').style.top = "12%";
@@ -433,7 +434,7 @@ form.example::after {
       if(document.getElementById("ThemeSetting").value=="OFF"){
       localStorage.ThemeSetting = "ON";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: Default";
+      document.getElementById("ThemeSetting").innerHTML = "Theme: New";
       document.getElementById('bg-img').style.backgroundImage = "url('images/1920x1080.gif')";
       document.getElementById('title').style.top = "20%";
       document.getElementById('Settings').style.top = "20%";
@@ -443,7 +444,7 @@ form.example::after {
       else if(document.getElementById("ThemeSetting").value=="ON"){
       localStorage.ThemeSetting = "OFF";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: Classic";
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Old";
       document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
       document.getElementById('title').style.top = "12%";
       document.getElementById('Settings').style.top = "12%";
@@ -452,7 +453,7 @@ form.example::after {
       else {
       localStorage.ThemeSetting = "OFF";
       document.getElementById("ThemeSetting").value = localStorage.ThemeSetting;
-      document.getElementById("ThemeSetting").innerHTML = "Theme: Classic";
+      document.getElementById("ThemeSetting").innerHTML = "Theme: Old";
       document.getElementById('bg-img').style.backgroundImage = "url('images/mudkip.png')";
       document.getElementById('title').style.top = "12%";
       document.getElementById('Settings').style.top = "12%";
@@ -462,16 +463,24 @@ form.example::after {
     }
     /* Search Toggle */
     window.onload = GetSearch()
-    function GetSearch() {      
+    function GetSearch() {
       document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      if(localStorage.SearchSetting == "Proxy"){
+      localStorage.SearchSetting = "Proxy";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Incognito";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the Unblocked web Incognito..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit Unblocked sites Incognito..";
+      document.getElementById("SearchFunction").action = "Search/proxysearch.html?";
+      document.getElementById("URLSearchFunction").action = "Search/proxyurl.html?";}
       if(localStorage.SearchSetting == "ON"){
       localStorage.SearchSetting = "ON";
       document.getElementById("SearchSetting").value = localStorage.SearchSetting;
-      document.getElementById("SearchSetting").innerHTML = "Search: Incognito";
+      document.getElementById("SearchSetting").innerHTML = "Search: Hidden";
       document.getElementById("SearchPlaceholderText").placeholder = "Surf the web Incognito..";
       document.getElementById("URLSearchPlaceholderText").placeholder = "Visit sites Incognito..";
       document.getElementById("SearchFunction").action = "Search/search.html?";
-      document.getElementById("URLSearchFunction").action = "Search/url.html?";}    
+      document.getElementById("URLSearchFunction").action = "Search/url.html?";}
 
       else if(localStorage.SearchSetting == "OFF"){
       localStorage.SearchSetting = "OFF";
@@ -480,26 +489,33 @@ form.example::after {
       document.getElementById("SearchPlaceholderText").placeholder = "Surf the web..";
       document.getElementById("URLSearchPlaceholderText").placeholder = "Visit websites..";
       document.getElementById("SearchFunction").action = "https://www.google.com/search?";
-      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";}   
+      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";}
     }
-    function SearchToggle() {  
+    function SearchToggle() {
       if(document.getElementById("SearchSetting").value=="OFF"){
       localStorage.SearchSetting = "ON";
       document.getElementById("SearchSetting").value = localStorage.SearchSetting;
-      document.getElementById("SearchSetting").innerHTML = "Search: Incognito";
+      document.getElementById("SearchSetting").innerHTML = "Search: Hidden";
       document.getElementById("SearchPlaceholderText").placeholder = "Surf the web Incognito..";
       document.getElementById("URLSearchPlaceholderText").placeholder = "Visit sites Incognito..";
       document.getElementById("SearchFunction").action = "Search/search.html?";
-      document.getElementById("URLSearchFunction").action = "Search/url.html?";}   
-      
+      document.getElementById("URLSearchFunction").action = "Search/url.html?";}
       else if(document.getElementById("SearchSetting").value=="ON"){
+      localStorage.SearchSetting = "Proxy";
+      document.getElementById("SearchSetting").value = localStorage.SearchSetting;
+      document.getElementById("SearchSetting").innerHTML = "Search: Incognito";
+      document.getElementById("SearchPlaceholderText").placeholder = "Surf the Unblocked web Incognito..";
+      document.getElementById("URLSearchPlaceholderText").placeholder = "Visit Unblocked sites Incognito..";
+      document.getElementById("SearchFunction").action = "Search/proxysearch.html?";
+      document.getElementById("URLSearchFunction").action = "Search/proxyurl.html?";}      
+      else if(document.getElementById("SearchSetting").value=="Proxy"){
       localStorage.SearchSetting = "OFF";
       document.getElementById("SearchSetting").value = localStorage.SearchSetting;
       document.getElementById("SearchSetting").innerHTML = "Search: Normal";
       document.getElementById("SearchPlaceholderText").placeholder = "Surf the web..";
       document.getElementById("URLSearchPlaceholderText").placeholder = "Visit Websites..";
       document.getElementById("SearchFunction").action = "https://www.google.com/search?";
-      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";}   
+      document.getElementById("URLSearchFunction").action = "Search/NormalURL.html?";}
       else {
       localStorage.SearchSetting = "OFF";
       document.getElementById("SearchSetting").value = localStorage.SearchSetting;
@@ -520,7 +536,7 @@ form.example::after {
     /* Close when someone clicks on the "x" symbol inside the overlay */
     function closeNav() {
       document.getElementById("myNav").style.width = "0%";
-    } 
+    }
   </script>
 	<script>
   function SearchQuery(){

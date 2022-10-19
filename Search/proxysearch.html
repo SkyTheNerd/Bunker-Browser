@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>To-do</title>
+		<link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png" />
+		<link href="/css/ui.css" rel="stylesheet" />
+	</head>
+	<body>
+<iframe id="query" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+    Your browser doesn't support iframes
+</iframe>
+						<!--- gets jquery or something idk --->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+	  // makes variables beable to go into the iframe.
+	   $(function(){
+		$('iframe').attr('src', "https://f82ccc42-b99f-48dd-a52e-5ae81974a790.id.repl.co/service/aHR0cHM6Ly9zZWFyY2gudW5sb2NrZWQubGluay9zZWFyY2g/cT0="+b);
+	  });
+	  // Code to get the search query (variable goes into search bar and this gets it.)
+	  const urlq = new URLSearchParams(window.location.search);
+	  const q = urlq.get("q");
+	  window.btoa(q);
+	  const b = window.btoa(q);
+	  console.log(b);
+	  if(q==""){
+		  alert("Attention! If you ended up here, you must have either been snoopin through the files, or deleted the variable.")
+		  alert("Unless if you wanted to go to the SearXNG homepage, but was to lazy to go there manually.")
+	  }
+	  if(q==null){
+		  alert("Attention! If you ended up here, you must have either been snoopin through the files, or deleted the variable.")
+		  alert("Or maybe you wanted to search null.")
+	  }
+	</script>
+	</body>
+</html>
