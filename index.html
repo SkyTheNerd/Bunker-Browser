@@ -9,14 +9,14 @@
   new Crate({
     server: '',
     channel: '',
-    glyph: ['images/WidgetBot.png', '100%'],
+    glyph: ['https://github.com/SkyAtSchool/SkyAtSchool.github.io/raw/main/news/1.3.0/News.png', '100%'],
   })
   window.onload = CrateVisible()
   function CrateVisible(){
-    if(localStorage.NewsSetting == "ON"){
+    if(localStorage.widgetSetting == "ON"){
       crate.show()
     }
-    else if(localStorage.NewsSetting == "OFF"){
+    else if(localStorage.widgetSetting == "OFF"){
       crate.hide()
     }
   }
@@ -330,7 +330,7 @@ form.example::after {
       <span class="border">Settings</span>
     </div>
     <div id="SettingsContent" class="overlay-content">
-      <button id="NewsSetting" onclick="NewsToggle()" value="ON">News: Enabled</button>
+      <button id="widgetSetting" onclick="widgetToggle()" value="ON">Widget: Enabled</button>
       <button id="ThemeSetting" onclick="ThemeToggle()" value="ON">Theme: New</button>
       <button id="SearchSetting" onclick="SearchToggle()" value="ON">Search: Hidden</button>
       <button href="#">About</button>
@@ -377,32 +377,32 @@ form.example::after {
     <span class="border">Bunker Browser</span>
   </div>
   <script>
-    /* News Toggle */
-    window.onload = GetNews()
-    function GetNews() {
-      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
-      if(localStorage.NewsSetting == "ON"){
-      localStorage.NewsSetting = "ON";
-      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
-      document.getElementById("NewsSetting").innerHTML = "News: Enabled";}
+    /* widget Toggle */
+    window.onload = Getwidget()
+    function Getwidget() {
+      document.getElementById("widgetSetting").value = localStorage.widgetSetting;
+      if(localStorage.widgetSetting == "ON"){
+      localStorage.widgetSetting = "ON";
+      document.getElementById("widgetSetting").value = localStorage.widgetSetting;
+      document.getElementById("widgetSetting").innerHTML = "Widget: Enabled";}
 
-      else if(localStorage.NewsSetting == "OFF"){
-      localStorage.NewsSetting = "OFF";
-      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
-      document.getElementById("NewsSetting").innerHTML = "News: Disabled";}
+      else if(localStorage.widgetSetting == "OFF"){
+      localStorage.widgetSetting = "OFF";
+      document.getElementById("widgetSetting").value = localStorage.widgetSetting;
+      document.getElementById("widgetSetting").innerHTML = "Widget: Disabled";}
     }
-    function NewsToggle() {
-      if(document.getElementById("NewsSetting").value=="OFF"){
-      localStorage.NewsSetting = "ON";
-      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
-      document.getElementById("NewsSetting").innerHTML = "News: Enabled";}
+    function widgetToggle() {
+      if(document.getElementById("widgetSetting").value=="OFF"){
+      localStorage.widgetSetting = "ON";
+      document.getElementById("widgetSetting").value = localStorage.widgetSetting;
+      document.getElementById("widgetSetting").innerHTML = "Widget: Enabled";}
       
-      else if(document.getElementById("NewsSetting").value=="ON"){
-      localStorage.NewsSetting = "OFF";
-      document.getElementById("NewsSetting").value = localStorage.NewsSetting;
-      document.getElementById("NewsSetting").innerHTML = "News: Disabled";}
+      else if(document.getElementById("widgetSetting").value=="ON"){
+      localStorage.widgetSetting = "OFF";
+      document.getElementById("widgetSetting").value = localStorage.widgetSetting;
+      document.getElementById("widgetSetting").innerHTML = "Widget: Disabled";}
       else {
-        localStorage.NewsSetting = "OFF";
+        localStorage.widgetSetting = "OFF";
       }
       location.reload()
     }
@@ -507,7 +507,7 @@ form.example::after {
       document.getElementById("SearchPlaceholderText").placeholder = "Surf the Unblocked web Incognito..";
       document.getElementById("URLSearchPlaceholderText").placeholder = "Visit Unblocked sites Incognito..";
       document.getElementById("SearchFunction").action = "Search/proxysearch.html?";
-      document.getElementById("URLSearchFunction").action = "Search/proxyurl.html?";}      
+      document.getElementById("URLSearchFunction").action = "Search/proxyurl.html?";}
       else if(document.getElementById("SearchSetting").value=="Proxy"){
       localStorage.SearchSetting = "OFF";
       document.getElementById("SearchSetting").value = localStorage.SearchSetting;
