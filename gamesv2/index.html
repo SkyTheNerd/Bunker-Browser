@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Classes</title>
+  <link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png" />
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<style>
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .container .btn:hover {
+    background-color: black;
+  }
+ /* Three image containers (use 25% for four, and 50% for two, etc) */
+ .column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+  </style>
+<body>
+    <body style="background-color:rgb(37, 37, 37);"></body>
+    <h2>
+        <p style="color:rgb(255, 255, 255); text-align:center;">Games</p>
+    </h2>
+    <p>
+        <p style="color:rgb(255, 255, 255); text-align:center;">Games have sound, make sure to adjust volume.</p>
+    </p>
+    <div class="row">
+      <div class="column">
+        <img src="img_snow.jpg" alt="Snow" style="width:100%">
+      </div>
+      <div class="column">
+        <img src="img_forest.jpg" alt="Forest" style="width:100%">
+      </div>
+      <div class="column">
+        <img src="img_mountains.jpg" alt="Mountains" style="width:100%">
+      </div>
+    </div> 
+    </body>
+    </html>
+    
+<!-- partial:index.partial.html -->
+<!-- tsParticles container -->
+<div id="tsparticles"></div>
+<!-- tsParticles lib - https://github.com/matteobruni/tsparticles -->
+<script src="./particles.js"></script>
+<!-- stats.js lib -->
+<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
