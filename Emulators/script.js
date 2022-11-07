@@ -20,9 +20,9 @@ tsParticles.load("tsparticles", {
     }
   },
   particles: {
-    color: { value: "#ffffff" },
+    color: { value: "rgb(255, 255, 255)" },
     line_linked: {
-      color: "#ffffff",
+      color: "rgb(255, 255, 255)",
       distance: 150,
       enable: true,
       opacity: 0.4,
@@ -77,18 +77,3 @@ tsParticles.load("tsparticles", {
   },
   retina_detect: true
 });
-stats.setMode(0);
-stats.domElement.style.position = "absolute";
-stats.domElement.style.left = "0px";
-stats.domElement.style.top = "0px";
-document.body.appendChild(stats.domElement);
-var count_particles = document.querySelector(".js-count-particles");
-var update = function () {
-  stats.begin();
-  stats.end();
-  if (tsParticles.domItem(0).particles.array) {
-    count_particles.innerText = tsParticles.domItem(0).particles.array.length;
-  }
-  requestAnimationFrame(update);
-};
-requestAnimationFrame(update);
